@@ -14,8 +14,9 @@ mymod.world_settings = libsettings.get_object(name)
 ### Settings object
 It works somewhat like the core Settings object (except the `define` function), but is specific to the mod AND specific to the world.
 
-### Settings:define(flag, default)
+### Settings:define(flag, default, read_config)
 Search for a value in the settings object (preferably), and in `minetest.conf`, and return it. If not present, set it to the `default` value, and return it. `minetest.conf` is never modified.
+`read_config` determines whether the `minetest.conf` value will be used or not (by default `true`).
 
 Very often, you can do everything you need, with this only function.
 
@@ -39,3 +40,5 @@ If you change it to `mymod_height = 60`, it will return `60` (`default` paramete
 You could also add for example `mymod_height = 40` in `minetest.conf`. It will override the `default` value, but only for new worlds. Very useful for some flags that shouldn't be changed after the world is created.
 
 The type of value is detected from the `default` value. A table is interpreted as noise parameters, so all other tables must be serialized.
+
+### TO DO: improve doc.
